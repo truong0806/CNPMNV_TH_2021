@@ -1,0 +1,26 @@
+.body{
+    display: flex;
+    align-items: center;
+}
+.name{
+    font-size: 28px;
+    font-weight: 600;
+    padding-left: 100px;
+}
+.ul{
+   display: flex;
+   justify-content: flex-end;
+   width: 100%;
+   padding-right: 90px;
+}
+
+.li span{
+    padding: 10px;
+    font-weight: 500;
+}
+.li span a{
+    color: black;
+}
+span a:hover{
+    text-decoration: none;
+}

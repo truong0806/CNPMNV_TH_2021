@@ -1,0 +1,14 @@
+.border{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    width: 70%;
+    background-color: white;
+    padding: 30px;
+}
+
+#dflex{
+transform: translate(0,-50px);
+}
+
+.col-3 ul li a:hover{
+    text-decoration: none;
+}
