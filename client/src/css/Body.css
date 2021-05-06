@@ -1,0 +1,16 @@
+.bodi{
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+.row{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    ruby-align: center;
+    vertical-align: middle;
+    
+}

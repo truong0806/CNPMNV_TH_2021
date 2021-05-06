@@ -1,0 +1,70 @@
+.bannerName{
+    transform: translate(590px,-330px);
+    font-size: 48px;
+    font-weight: 500;
+    color: white;
+    z-index: 1;
+}
+#dflexDetail{
+    transform: translate(0px,-150px);
+}
+#bannerImageCity{
+    width: 100%;
+    height: 600px;
+}
+.hotelFromCity{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
+}
+
+.hotelInCity{
+    display: flex;
+    flex-direction: row;
+}
+
+.imageHotelIncity img{
+    width: 300px;
+    height: 200px;
+}
+
+.detailHotelInCity{
+    margin-left: 10px;
+}
+
+.locationHotel{
+    font-size: 14px;
+    color: rgb(168, 168, 168);
+}
+
+.labelHotel{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(61, 123, 255);
+}
+#hotelCard:hover{
+    text-decoration: none;
+}
+
+#hotelCard:hover .labelHotel{
+    color:  rgb(119, 119, 245)
+}
+#hotelCard{
+    border:1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    overflow: hidden;
+    width: 1000px;
+    height: 200px;
+    margin-bottom: 25px;
+    background-color: white;
+    box-shadow: 1px 1px rgb(187, 187, 187);
+}
+
+.app{
+    background-color: rgb(224, 224, 224);
+}
+h4{
+    padding-bottom: 20px;
+}

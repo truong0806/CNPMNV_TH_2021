@@ -1,0 +1,67 @@
+.border{
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.16), 0 1px 6px rgba(0,0,0,0.23);
+    width: 70%;
+    background-color: white;
+    padding: 10px 30px 0 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 380px;
+}
+.border a{
+    font-size: 17px;
+    font-weight: 500;
+}
+.border a:hover{
+    text-decoration:none;
+    font-weight: 600;
+}
+
+.col-3 ul li a:hover{
+    text-decoration: none;
+}
+#btn{
+    width: 100%;
+    background-color: orange;
+}
+
+#btn:hover{
+    width: 100%;
+    background-color: rgb(255, 115, 22);
+}
+.date_picker.full-width {
+    width: 100%;
+}
+.row label{
+    font-weight: 500;
+}
+#hiddenForm{
+    position: absolute;
+    z-index: 80;
+    width: 95.5%;
+    background-color: white;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    display: none;
+    
+}
+#hiddenForm .row{
+    padding: 10px;
+}
+#hiddenForm .row .col-8{
+    font-weight: 500;
+}
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+ 
