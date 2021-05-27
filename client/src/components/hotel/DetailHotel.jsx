@@ -63,14 +63,14 @@ export default function DetailHotel() {
             <div className="row">
               <div className="col-12">
                 <label className="TenPhongDetail">
-                  {hotel.length == 0 ? "" : hotel[0].TenKhachSan}
+                  {hotel.length == 0 ? "" : hotel.TenKhachSan}
                 </label>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <label className="DiaChiPhongDetail">
-                  {hotel.length == 0 ? "" : hotel[0].DiaChi}
+                  {hotel.length == 0 ? "" : hotel.DiaChi}
                 </label>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function DetailHotel() {
               <div className="col-1"></div>
               <div className="col-10">
                 <img
-                  src={hotel.length == 0 ? "" : hotel[0].ImageKhachSan}
+                  src={hotel.length == 0 ? "" : hotel.ImageKhachSan}
                   id="imageHotel"
                 />
               </div>
@@ -100,7 +100,7 @@ export default function DetailHotel() {
               </div>
               <div className="giaPhongDetail col-4">
                 <label className="giaDetail">
-                  {OnFormatGia(hotel.length == 0 ? 0 : hotel[0].GiaToiThieu)}{" "}
+                  {OnFormatGia(hotel.length == 0 ? 0 : hotel.GiaToiThieu)}{" "}
                   VND
                 </label>
               </div>
@@ -171,7 +171,7 @@ export default function DetailHotel() {
                     <p id="pDem">/phòng /đêm</p>
                     <Button
                       id="btnDatPhong"
-                      onClick={() => datPhong(room.MaPhong)}
+                      onClick={() => datPhong(room._id)}
                     >
                       Đặt ngay
                     </Button>

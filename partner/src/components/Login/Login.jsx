@@ -62,11 +62,10 @@ export default function Login(props) {
     setUser({ ...user, [name]: value });
   };
 
-
-
   const onSubmit = async (e) => {
     e.preventDefault();
-    const emailFormat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const emailFormat =
+      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
     if (user.email == "") {
       emailC = "Email không được bỏ trống !";
@@ -81,28 +80,31 @@ export default function Login(props) {
       : (passwordC = "");
 
     if (emailC == "" && passwordC == "") {
-      var acc = await Axios.post(`http://localhost:9000/account/check`, {
-        Email: user.email,
-        Password: user.password,
-      });
-      if(acc.data.length==0)
-      {
-        passwordC="Tài khoản hoặc mật khẩu không đúng !"
-      }
-      else
-      {
-        localStorage.removeItem('role')
-        try
+      var acc = await Axios.post(
+        `https://deploy-hotel-api.herokuapp.com/account/check`,
         {
-          await Axios.get("http://localhost:9000/role/get/"+acc.data[0].RoleId).then(res=>localStorage.setItem('role',res.data.length!=0?res.data[0].roleName:null))
-          localStorage.setItem('email',acc.data[0].Email)
-          localStorage.setItem('maTK',acc.data[0].MaTK)
+          Email: user.email,
+          Password: user.password,
         }
-        catch(error)
-        {
-
-        }
-        window.location.href="/"
+      );
+      if (acc.data.length == 0) {
+        passwordC = "Tài khoản hoặc mật khẩu không đúng !";
+      } else {
+        localStorage.removeItem("role");
+        try {
+          await Axios.get(
+            "https://deploy-hotel-api.herokuapp.com/role/get/" +
+              acc.data[0].RoleId
+          ).then((res) =>
+            localStorage.setItem(
+              "role",
+              res.data.length != 0 ? res.data[0].roleName : null
+            )
+          );
+          localStorage.setItem("email", acc.data[0].Email);
+          localStorage.setItem("maTK", acc.data[0]._id);
+        } catch (error) {}
+        window.location.href = "/";
       }
     }
     setErr({ ...err, email: emailC, password: passwordC });

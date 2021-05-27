@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.680848f1.chunk.css",
+    "main.js": "/static/js/main.f5e1d19f.chunk.js",
+    "main.js.map": "/static/js/main.f5e1d19f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5f8b4451.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5f8b4451.js.map",
+    "static/css/2.249aab61.chunk.css": "/static/css/2.249aab61.chunk.css",
+    "static/js/2.bec6ecf0.chunk.js": "/static/js/2.bec6ecf0.chunk.js",
+    "static/js/2.bec6ecf0.chunk.js.map": "/static/js/2.bec6ecf0.chunk.js.map",
+    "static/js/3.65c038ea.chunk.js": "/static/js/3.65c038ea.chunk.js",
+    "static/js/3.65c038ea.chunk.js.map": "/static/js/3.65c038ea.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.249aab61.chunk.css.map": "/static/css/2.249aab61.chunk.css.map",
+    "static/css/main.680848f1.chunk.css.map": "/static/css/main.680848f1.chunk.css.map",
+    "static/js/2.bec6ecf0.chunk.js.LICENSE.txt": "/static/js/2.bec6ecf0.chunk.js.LICENSE.txt",
+    "static/media/Capture.bb5931f4.png": "/static/media/Capture.bb5931f4.png",
+    "static/media/Capture1.fa3f7e6f.png": "/static/media/Capture1.fa3f7e6f.png",
+    "static/media/airplane.f1874698.png": "/static/media/airplane.f1874698.png",
+    "static/media/banner.8f26eded.png": "/static/media/banner.8f26eded.png",
+    "static/media/booking-app.9893c3a8.png": "/static/media/booking-app.9893c3a8.png",
+    "static/media/dove.eacdbd3e.png": "/static/media/dove.eacdbd3e.png",
+    "static/media/email.9082177d.png": "/static/media/email.9082177d.png",
+    "static/media/holiday.31da2f92.png": "/static/media/holiday.31da2f92.png",
+    "static/media/hotel.9cf70ac6.png": "/static/media/hotel.9cf70ac6.png",
+    "static/media/logo.6ce24c58.svg": "/static/media/logo.6ce24c58.svg",
+    "static/media/pass.370323ef.png": "/static/media/pass.370323ef.png",
+    "static/media/percentage.4813b5ee.png": "/static/media/percentage.4813b5ee.png",
+    "static/media/rent.e10bc1bd.png": "/static/media/rent.e10bc1bd.png",
+    "static/media/tienich.3413ef91.png": "/static/media/tienich.3413ef91.png",
+    "static/media/transportation.af04984e.png": "/static/media/transportation.af04984e.png",
+    "static/media/x.7c45b4fa.png": "/static/media/x.7c45b4fa.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5f8b4451.js",
+    "static/css/2.249aab61.chunk.css",
+    "static/js/2.bec6ecf0.chunk.js",
+    "static/css/main.680848f1.chunk.css",
+    "static/js/main.f5e1d19f.chunk.js"
+  ]
+}

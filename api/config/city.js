@@ -1,21 +1,31 @@
-var db = require('./config');
+var { CityDb } = require("./model");
 
-var City={
-	getAllCity:function(callback){
-		return db.query("Select * from thanhpho",callback);
-	},
-	getCityById:function(id,callback){
-		return db.query("select * from thanhpho where MaThanhPho=?",[id],callback);
-	},
-	addCity:function(city,callback){
-		return db.query("Insert into thanhpho(TenThanhPho,ImageThanhPho) values(?,?)",[city.nameCity,city.imgCity],callback);
-	},
-	deleteCity:function(id,callback){
-		return db.query("delete from thanhpho where MaThanhPho=?",[id],callback);
-	},
-	updateCity:function(id,city,callback){
-		return db.query("update thanhpho set TenThanhPho=?,ImageThanhPho=? where MaThanhPho=?",[city.nameCity,city.imgCity,id],callback);
-	}
+var City = {
+  getAllCity: function (callback) {
+    return CityDb.find().then(callback);
+  },
+  getCityById: function (id, callback) {
+    return CityDb.findById(id).then(callback);
+  },
+  addCity: function (city, callback) {
+    const cityDb = new CityDb({
+      TenThanhPho: city.TenThanhPho,
+      ImageThanhPho: city.ImageThanhPho,
+    });
+    return cityDb.save(cityDb).then(callback);
+  },
+  deleteCity: function (id, callback) {
+    return CityDb.findByIdAndRemove(id).then(callback);
+  },
+  updateCity: function (id, city, callback) {
+    return CityDb.findByIdAndUpdate(
+      id,
+      { TenThanhPho: city.TenThanhPho, ImageThanhPho: city.ImageThanhPho },
+      {
+        useFindAndModify: false,
+      }
+    ).then(callback);
+  },
 };
 
-module.exports=City
+module.exports = City;

@@ -12,13 +12,13 @@ function Index(){
   const [user,setUser]=useState([]);
 
   useEffect(()=>{
-    Axios.get("http://localhost:9000/account/get").then((response)=>{
+    Axios.get("https://deploy-hotel-api.herokuapp.com/account/get").then((response)=>{
     setUser(response.data)
   })},[])
 
   const deleteUser=(id)=>{
-    Axios.delete(`http://localhost:9000/account/delete/${id}`).then(() => {
-          setUser(user.filter(x=>x.MaTK!=id))
+    Axios.delete(`https://deploy-hotel-api.herokuapp.com/account/delete/${id}`).then(() => {
+          setUser(user.filter(x=>x._id!=id))
         } 
     )
   }
@@ -46,15 +46,15 @@ function Index(){
           {
             user.map(a=>
               <tr>
-                <th>{a.MaTK}</th>
+                <th>{a._id}</th>
                 <td>{a.TenTK}</td>
                 <td>{a.Email}</td>
                 <td>{a.Password}</td>
                 <td>{a.Phone}</td>
                 <td>{a.RoleId}</td>
                 <td style={{width:"115px"}}>
-                    <Button color="success" onClick={()=>updateUser(a.MaTK)} style={{width:'100%',marginBottom:'5px'}}>Cập nhật</Button>{' '}
-                    <Button color="danger" onClick={() => deleteUser(a.MaTK)} style={{width:'100%'}}>Xóa</Button>{' '}
+                    <Button color="success" onClick={()=>updateUser(a._id)} style={{width:'100%',marginBottom:'5px'}}>Cập nhật</Button>{' '}
+                    <Button color="danger" onClick={() => deleteUser(a._id)} style={{width:'100%'}}>Xóa</Button>{' '}
                 </td>
               </tr>
             )

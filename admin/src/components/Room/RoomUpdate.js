@@ -22,7 +22,7 @@ export default function HotelUpdate() {
 
     const [updateRoom,setUpdateRoom]=useState([])
     useEffect(()=>{
-        Axios.get("http://localhost:9000/room/get/"+id).then(
+        Axios.get("https://deploy-hotel-api.herokuapp.com/room/get/"+id).then(
             res=>setUpdateRoom(res.data)
         )
     },[])
@@ -30,7 +30,7 @@ export default function HotelUpdate() {
     const history=useHistory();
 
     const updateHotel=()=>{
-        Axios.put("http://localhost:9000/room/update/"+id,{
+        Axios.put("https://deploy-hotel-api.herokuapp.com/room/update/"+id,{
             nameRoom:room.tenPhong,
             people:room.soLuongNguoi,
             price:room.giaPhong,

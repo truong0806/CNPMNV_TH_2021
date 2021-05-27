@@ -81,7 +81,7 @@ export default function Login(props) {
       : (passwordC = "");
 
     if (emailC == "" && passwordC == "") {
-      var acc = await Axios.post(`http://localhost:9000/account/check`, {
+      var acc = await Axios.post(`https://deploy-hotel-api.herokuapp.com/account/check`, {
         Email: user.email,
         Password: user.password,
       });
@@ -94,7 +94,7 @@ export default function Login(props) {
         localStorage.removeItem('role')
         try
         {
-          await Axios.get("http://localhost:9000/role/get/"+acc.data[0].RoleId).then(res=>localStorage.setItem('role',res.data.length!=0?res.data[0].roleName:null))
+          await Axios.get("https://deploy-hotel-api.herokuapp.com/role/get/"+acc.data[0].RoleId).then(res=>localStorage.setItem('role',res.data.length!=0?res.data[0].roleName:null))
           localStorage.setItem('email',acc.data[0].Email)
           localStorage.setItem('maTK',acc.data[0].MaTK)
         }

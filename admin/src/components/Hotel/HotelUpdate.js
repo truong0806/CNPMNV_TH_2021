@@ -10,7 +10,7 @@ export default function HotelUpdate() {
 
     const [hotel,setHotel]=useState([])
     useEffect(()=>{
-        Axios.get("http://localhost:9000/hotel/get/"+id).then(
+        Axios.get("https://deploy-hotel-api.herokuapp.com/hotel/get/"+id).then(
             res=>setHotel(res.data)
         )
     },[])
@@ -26,7 +26,7 @@ export default function HotelUpdate() {
     const history=useHistory();
 
     const updateHotel=()=>{
-        Axios.put("http://localhost:9000/hotel/update/"+id,{
+        Axios.put("https://deploy-hotel-api.herokuapp.com/hotel/update/"+id,{
             nameHotel:nameHotel,
             location:location,
             description:description,
@@ -43,14 +43,14 @@ export default function HotelUpdate() {
     const option=[]
 
     useEffect(() => {
-        Axios.get("http://localhost:9000/city/get").then(
+        Axios.get("https://deploy-hotel-api.herokuapp.com/city/get").then(
             res=>setCity(res.data)
         )
     }, [])
 
     city.map(city=>{
         option.push({
-            value:city.MaThanhPho,
+            value:city._id,
             label:city.TenThanhPho
         })
     })

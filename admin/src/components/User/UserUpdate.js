@@ -21,14 +21,14 @@ export default function UserUpdate() {
   let { id } = useParams();
 
   useEffect(() => {
-    Axios.get("http://localhost:9000/account/get/" + id).then((res) =>
-      setUser(res.data[0])
+    Axios.get("https://deploy-hotel-api.herokuapp.com/account/get/" + id).then((res) =>
+      setUser(res.data)
     );
   }, []);
   
   const userSubmit = () => {
       console.log(user)
-      Axios.put(`http://localhost:9000/account/update/${id}`,user).then(() => {
+      Axios.put(`https://deploy-hotel-api.herokuapp.com/account/update/${id}`,user).then(() => {
         window.location.href = "/user";
       });
   };
@@ -41,11 +41,11 @@ export default function UserUpdate() {
   const options=[{value:null,label:'No Role'}]
   const [role,setRole]=useState([])
   useEffect(()=>{
-    Axios.get("http://localhost:9000/role/get").then(res=>{
+    Axios.get("https://deploy-hotel-api.herokuapp.com/role/get").then(res=>{
       setRole(res.data)
     })
   },[])
-  role.map(x=>{options.push({value:x.roleId,label:x.roleName})})
+  role.map(x=>{options.push({value:x._id,label:x.roleName})})
 
   const onSelect=e=>{
     setUser({...user,RoleId:e.value})

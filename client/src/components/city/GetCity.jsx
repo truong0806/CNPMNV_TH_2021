@@ -27,7 +27,7 @@ class GetCiTy extends Router.Component {
       <div className='body-home'>
           {
             this.state.apiResponse.map(a=>
-              <Link to={`/city/detail/${a.MaThanhPho}`} className="card" style={{backgroundImage:`url(${a.ImageThanhPho})`}} >              
+              <Link to={`/city/detail/${a._id}`} className="card" style={{backgroundImage:`url(${a.ImageThanhPho})`}} >              
                 <p className='nameCity'>{a.TenThanhPho}</p>
               </Link>
               )

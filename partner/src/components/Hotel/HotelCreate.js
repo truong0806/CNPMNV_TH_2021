@@ -14,9 +14,9 @@ export default function HotelCreate() {
   const [idCity, setIdCity] = useState("");
 
   const history = useHistory();
-
+  const maTK = localStorage.getItem("maTK");
   const createHotel = () => {
-    Axios.post("http://localhost:9000/hotel/create", {
+    Axios.post("https://deploy-hotel-api.herokuapp.com/hotel/create", {
       nameHotel: nameHotel,
       location: location,
       description: description,
@@ -24,22 +24,22 @@ export default function HotelCreate() {
       image: image,
       status: status,
       idCity: idCity,
-      MaTK:localStorage.getItem("maTK")
-    }).then((window.location.href = "/hotel"));
+      MaTK: maTK,
+    }).then(()=>(window.location.href = "/hotel"));
   };
 
   const [city, setCity] = useState([]);
   const option = [];
 
   useEffect(() => {
-    Axios.get("http://localhost:9000/city/get").then((res) =>
+    Axios.get("https://deploy-hotel-api.herokuapp.com/city/get").then((res) =>
       setCity(res.data)
     );
   }, []);
 
   city.map((city) => {
     option.push({
-      value: city.MaThanhPho,
+      value: city._id,
       label: city.TenThanhPho,
     });
   });
@@ -74,7 +74,8 @@ export default function HotelCreate() {
           <input
             type="number"
             className="form-control"
-            name="price" min="0"
+            name="price"
+            min="0"
             onChange={(e) => {
               setPrice(e.target.value);
             }}

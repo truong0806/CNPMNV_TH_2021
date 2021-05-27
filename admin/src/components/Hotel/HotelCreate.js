@@ -16,7 +16,7 @@ export default function HotelCreate() {
   const history = useHistory();
 
   const createHotel = () => {
-    Axios.post("http://localhost:9000/hotel/create", {
+    Axios.post("https://deploy-hotel-api.herokuapp.com/hotel/create", {
       nameHotel: nameHotel,
       location: location,
       description: description,
@@ -31,14 +31,14 @@ export default function HotelCreate() {
   const option = [];
 
   useEffect(() => {
-    Axios.get("http://localhost:9000/city/get").then((res) =>
+    Axios.get("https://deploy-hotel-api.herokuapp.com/city/get").then((res) =>
       setCity(res.data)
     );
   }, []);
 
   city.map((city) => {
     option.push({
-      value: city.MaThanhPho,
+      value: city._id,
       label: city.TenThanhPho,
     });
   });

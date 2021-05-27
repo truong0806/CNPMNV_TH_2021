@@ -9,25 +9,37 @@ import { Button } from "react-bootstrap";
 export default function Index() {
   let { id } = useParams();
   const [phong, setPhong] = useState([]);
-  const history = useHistory();
-  const [taikhoan, setTaiKhoan] = useState([]);
+  const [datphong, setDatPhong] = useState({
+    NgayDatPhong: "",
+    NgayTraPhong: "",
+    Voucher: "",
+    TienDat: 0,
+    MaTK: "",
+    TenNguoiDat: "",
+    SoDienThoai: "",
+    Email: "",
+    MaPhong: "",
+    TrangThai: "",
+  });
+
   useEffect(() => {
     Axios.get(
       `${process.env.REACT_APP_USER_API}/checkmail/${localStorage
         .getItem("email")
         .toString()}`
     ).then((res) => {
-      setTaiKhoan(res.data);
+      let idTK = res.data[0]._id;
       let ten = res.data[0].TenTK;
       let mail = res.data[0].Email;
       let phone = res.data[0].Phone;
       setDatPhong({
         ...datphong,
+        MaTK: idTK,
         TenNguoiDat: ten,
         Email: mail,
         SoDienThoai: phone,
         Voucher: "",
-        MaPhong: parseInt(id),
+        MaPhong: id,
         TrangThai: "Chưa xác nhận",
       });
     });
@@ -40,19 +52,6 @@ export default function Index() {
   }, []);
 
   const [dayPicker, changeDayPicker] = useState(new Date());
-
-  const [datphong, setDatPhong] = useState({
-    NgayDatPhong: "",
-    NgayTraPhong: "",
-    Voucher: "",
-    TienDat:0,
-    MaTK: 0,
-    TenNguoiDat: "",
-    SoDienThoai: "",
-    Email: "",
-    MaPhong: 0,
-    TrangThai: "",
-  });
 
   const [night, setNight] = useState(0);
 
@@ -119,7 +118,12 @@ export default function Index() {
         monthPicker = monthPicker - 12;
         yearPicker = yearPicker + 1;
       }
-      const final = dateReturn + "/" + monthPicker + "/" + yearPicker;
+      const final =
+        yearPicker +
+        "/" +
+        monthPicker.toString().padStart(2, "0") +
+        "/" +
+        dateReturn.toString().padStart(2, "0");
       return final;
     }
   };
@@ -130,15 +134,19 @@ export default function Index() {
     SoDienThoai: "",
     SoDem: "",
   });
-  var ngayDat = dayPicker.toLocaleString();
+  var ngayDat =
+    dayPicker.getFullYear() +
+    "/" +
+    (dayPicker.getMonth()+1).toString().padStart(2, "0") +
+    "/" +
+    dayPicker.getDate().toString().padStart(2, "0");
   var ngayTra = calDayReturn();
   useEffect(() => {
     setDatPhong({
       ...datphong,
       NgayDatPhong: ngayDat,
       NgayTraPhong: ngayTra,
-      TienDat:phong.length==0?0:phong[0].GiaPhong*night,
-      MaTK: taikhoan.length == 0 ? 0 : taikhoan[0].MaTK,
+      TienDat: phong.length == 0 ? 0 : phong.GiaPhong * night,
     });
     console.log(datphong);
   }, [ngayDat, ngayTra]);
@@ -156,7 +164,7 @@ export default function Index() {
       Axios.post(
         `${process.env.REACT_APP_API_URL}/datphong/create`,
         datphong
-      ).then(history.push("/"));
+      ).then(() => (window.location.href = "/"));
     }
   };
 
@@ -175,18 +183,16 @@ export default function Index() {
     let split = gia.match(/.{1,1}/g);
     let format = [];
     if (split != null) {
-        for (let i = split.length - 1; i >= 0; i--) {
-          format.push(split[i]);
-      }     
+      for (let i = split.length - 1; i >= 0; i--) {
+        format.push(split[i]);
+      }
     }
     let finalPriceFormat = "";
     for (let i = format.length - 1; i >= 0; i--) {
       finalPriceFormat += format[i];
-      if(i%3==0)
-      {
-        if(i!=0)
-        {
-          finalPriceFormat+="."
+      if (i % 3 == 0) {
+        if (i != 0) {
+          finalPriceFormat += ".";
         }
       }
     }
@@ -307,33 +313,46 @@ export default function Index() {
               <div id="col4Room">
                 <div className="row">
                   <div className="col-12">
-                    <label>{phong.length == 0 ? "" : phong[0].TenPhong}</label>
+                    <label>{phong.length == 0 ? "" : phong.TenPhong}</label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-12">
-                    <img
-                      src={phong.length == 0 ? "" : phong[0].ImagePhong}
-                    ></img>
+                    <img src={phong.length == 0 ? "" : phong.ImagePhong}></img>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-12">
                     <label>
-                      {phong.length == 0 ? "" : phong[0].SoLuongNguoi} khách
+                      {phong.length == 0 ? "" : phong.SoLuongNguoi} khách
                     </label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-12">
-                  <label>{phong.length != 0?phong[0].GiuongDon==0?"":`${phong[0].GiuongDon} giường đơn`:""}</label>
-                  <label>{phong.length != 0?phong[0].GiuongDoi==0?"":`${phong[0].GiuongDoi} giường đôi`:""}</label>
+                    <label>
+                      {phong.length != 0
+                        ? phong.GiuongDon == 0
+                          ? ""
+                          : `${phong.GiuongDon} giường đơn`
+                        : ""}
+                    </label>
+                    <label>
+                      {phong.length != 0
+                        ? phong.GiuongDoi == 0
+                          ? ""
+                          : `${phong.GiuongDoi} giường đôi`
+                        : ""}
+                    </label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-12">
                     <label id="col4GiaPhong">
-                      {OnFormatGia(phong.length == 0 ? "" : phong[0].GiaPhong*night)} VND
+                      {OnFormatGia(
+                        phong.length == 0 ? "" : phong.GiaPhong * night
+                      )}{" "}
+                      VND
                     </label>
                   </div>
                 </div>

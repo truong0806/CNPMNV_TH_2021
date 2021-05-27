@@ -22,7 +22,7 @@ export default function HotelUpdate() {
 
     const [updateRoom,setUpdateRoom]=useState([])
     useEffect(()=>{
-        Axios.get("http://localhost:9000/room/get/"+id).then(
+        Axios.get("https://deploy-hotel-api.herokuapp.com/room/get/"+id).then(
             res=>setUpdateRoom(res.data)
         )
     },[])
@@ -30,7 +30,7 @@ export default function HotelUpdate() {
     const history=useHistory();
 
     const updateHotel=()=>{
-        Axios.put("http://localhost:9000/room/update/"+id,{
+        Axios.put("https://deploy-hotel-api.herokuapp.com/room/update/"+id,{
             nameRoom:room.tenPhong,
             people:room.soLuongNguoi,
             price:room.giaPhong,
@@ -56,42 +56,42 @@ export default function HotelUpdate() {
                 <div className="form-group">
                     <label>Tên Phòng: </label>
                     <input type="text" className="form-control" name="tenPhong" onChange={onChange} 
-                    placeholder={updateRoom.length==0?"":updateRoom[0].TenPhong}/>
+                    placeholder={updateRoom.length==0?"":updateRoom.TenPhong}/>
                 </div>
                 <div className="form-group">
                     <label>Số Lượng Người: </label>
                     <input type="number" className="form-control" name="soLuongNguoi" onChange={onChange}
-                     placeholder={updateRoom.length==0?0:updateRoom[0].SoLuongNguoi} min="1"/>
+                     placeholder={updateRoom.length==0?0:updateRoom.SoLuongNguoi} min="1"/>
                 </div>
                 <div className="form-group">
                     <label>Giá Phòng: </label>
                     <input type="number" className="form-control" name="giaPhong"  onChange={onChange}
-                    placeholder={updateRoom.length==0?0:updateRoom[0].GiaPhong} min="0"/>
+                    placeholder={updateRoom.length==0?0:updateRoom.GiaPhong} min="0"/>
                 </div>
                 <div className="form-group">
                     <label>Số Lượng Phòng: </label>
                     <input type="number" className="form-control" name="soLuongPhong" onChange={onChange}
-                    placeholder={updateRoom.length==0?0:updateRoom[0].SoLuongPhong} min="1"/>
+                    placeholder={updateRoom.length==0?0:updateRoom.SoLuongPhong} min="1"/>
                 </div>
                 <div className="form-group">
                     <label>Mô Tả Phòng: </label>
                     <input type="text" className="form-control" name="moTa"  onChange={onChange}
-                    placeholder={updateRoom.length==0?"":updateRoom[0].MoTa}/>
+                    placeholder={updateRoom.length==0?"":updateRoom.MoTa}/>
                 </div>
                 <div className="form-group">
                     <label>Giường Đơn: </label>
                     <input type="number" className="form-control" name="giuongDon"  onChange={onChange}
-                    placeholder={updateRoom.length==0?"":updateRoom[0].GiuongDon} min="0"/>
+                    placeholder={updateRoom.length==0?"":updateRoom.GiuongDon} min="0"/>
                 </div>
                 <div className="form-group">
                     <label>Giường Đôi: </label>
                     <input type="number" className="form-control" name="giuongDoi"  onChange={onChange}
-                     placeholder={updateRoom.length==0?"":updateRoom[0].GiuongDoi} min="0"/>
+                     placeholder={updateRoom.length==0?"":updateRoom.GiuongDoi} min="0"/>
                 </div>
                 <div className="form-group">
                     <label>Hình Ảnh Phòng: </label>
                     <input type="text" className="form-control" name="imgPhong" onChange={onChange}
-                    placeholder={updateRoom.length==0?"":updateRoom[0].ImagePhong}/>
+                    placeholder={updateRoom.length==0?"":updateRoom.ImagePhong}/>
                 </div>
                 <div className="form-group">
                     <Button color="success" onClick={updateHotel}>Cập nhật</Button>

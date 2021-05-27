@@ -12,9 +12,9 @@ export default function Create() {
     const history = useHistory();
 
     const citySubmit=()=>{
-        Axios.post('http://localhost:9000/city/create',{
-            nameCity:nameCity,
-            imgCity:imgCity
+        Axios.post('https://deploy-hotel-api.herokuapp.com/city/create',{
+            TenThanhPho:nameCity,
+            ImageThanhPho:imgCity
         }).then(()=>{
             window.location.href="/city"
         })

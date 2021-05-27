@@ -114,7 +114,7 @@ export default function Form() {
 
   const cityOption = [];
   city.map((city) =>
-    cityOption.push({ value: city.MaThanhPho, label: city.TenThanhPho })
+    cityOption.push({ value: city._id, label: city.TenThanhPho })
   );
 
   //Khach Phong

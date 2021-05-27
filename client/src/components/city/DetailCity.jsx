@@ -7,7 +7,6 @@ import Axios from 'axios'
 import Footer from '../component/Footer'
 import "../../App.css";
 import "../../css/DetailCity.css"
-import { Button } from 'reactstrap'
 
 export default function DetailCity() {
     const [hotel,setHotel]=useState([])
@@ -20,12 +19,11 @@ export default function DetailCity() {
         })
     },[])
 
-    useEffect(async()=>{
-        await Axios.get(`${process.env.REACT_APP_API_URL}/city/get/${id}`).then((res)=>{
+    useEffect(()=>{
+         Axios.get(`${process.env.REACT_APP_API_URL}/city/get/${id}`).then((res)=>{
             setCity(res.data)
         })
     },[])
-
     return (
         <div className="app" id="app"> 
             <div id="overlay"></div>
@@ -34,16 +32,16 @@ export default function DetailCity() {
                     <Nav />
                 </div>
             <div>
-                <img src={city[0]==null?"":city[0].ImageThanhPho} id="bannerImageCity" />
-                <label className="bannerName">{city.length==0?"":city[0].TenThanhPho}</label>
+                <img src={city==null?"":city.ImageThanhPho} id="bannerImageCity" />
+                <label className="bannerName">{city.length==0?"":city.TenThanhPho}</label>
                 <div className="d-flex justify-content-center" id="dflexDetail">
                     <Form />
                 </div>
                 <div className="hotelFromCity">
-                <h4>Các khách sạn được yêu thích ở {city.length==0?"":city[0].TenThanhPho}</h4>
+                <h4>Các khách sạn được yêu thích ở {city.length==0?"":city.TenThanhPho}</h4>
                 {
                     hotel.filter(x=>x.MaThanhPho==id).map(x=>
-                        <Link to={`/hotel/detail/${x.MaKhachSan}`} id="hotelCard">
+                        <Link to={`/hotel/detail/${x._id}`} id="hotelCard">
                             <div className="hotelInCity">
                                 <div className="imageHotelIncity">
                                     <img src={x.ImageKhachSan}></img>

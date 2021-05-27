@@ -1,23 +1,28 @@
-var db = require('./config');
+var { RoleDb } = require("./model");
 
-var Role={
-	getAllRole:function(callback){
-		return db.query("Select * from role",callback);
-	},
-	getRoleById:function(id,callback){
-		return db.query("select * from role where roleId=?",[id],callback);
-	},
-	addRole:function(role,callback){
-		return db.query("Insert into role(roleName) values(?)"
-        ,[role.roleName],callback);
-	},
-	deleteRole:function(id,callback){
-		return db.query("delete from role where roleId=?",[id],callback);
-	},
-	updateRole:function(id,role,callback){
-		return db.query("update role set roleName=? where roleId=?"
-        ,[role.roleName,id],callback);
-	}
+var Role = {
+  getAllRole: function (callback) {
+    return RoleDb.find().then(callback);
+  },
+  getRoleById: function (id, callback) {
+    return RoleDb.find({ _id: id }).then(callback);
+  },
+  addRole: function (role, callback) {
+    const roleDb = new RoleDb({ roleName: role.roleName });
+    return roleDb.save(roleDb).then(callback);
+  },
+  deleteRole: function (id, callback) {
+    return RoleDb.findByIdAndRemove(id).then(callback);
+  },
+  updateRole: function (id, role, callback) {
+    return RoleDb.findByIdAndUpdate(
+      id,
+      { roleName: role.roleName },
+      {
+        useFindAndModify: false,
+      }
+    ).then(callback);
+  },
 };
 
-module.exports=Role
+module.exports = Role;
