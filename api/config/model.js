@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 var role = new mongoose.Schema({
   roleName: { type: String, required: true },
 });
@@ -49,7 +48,6 @@ var room = new mongoose.Schema({
 });
 
 const RoomDb = mongoose.model("phongs", room);
-
 var donDat = new mongoose.Schema({
   NgayDatPhong: { type: Date, required: true },
   NgayTraPhong: { type: Date, required: true },
@@ -83,3 +81,4 @@ module.exports = {
   DonDatDb,
   HoaDonDb,
 };
+

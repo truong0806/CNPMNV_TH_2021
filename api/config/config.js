@@ -12,7 +12,7 @@
 
 const mongoose = require("mongoose");
 const uri =
-  "mongodb+srv://root:dat130299@cluster0.wmdku.mongodb.net/traveloka?retryWrites=true&w=majority";
+  "mongodb+srv://thanhtruong0901234:truong911@cluster0.sdtewo6.mongodb.net/?retryWrites=true&w=majority";
 const connectDB = async () => {
   try {
     const con = await mongoose.connect(uri, {
@@ -21,6 +21,7 @@ const connectDB = async () => {
       useFindAndModify: false,
       useCreateIndex: true,
     });
+
     console.log(`MongoDB connected: ${con.connection.host}`);
   } catch (err) {
     console.log(err);
@@ -28,3 +29,4 @@ const connectDB = async () => {
   }
 };
 module.exports = connectDB;
+

@@ -29,7 +29,7 @@
     "react-dropdown-select": "^4.7.4",
     "react-native": "^0.64.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.1",
     "react-select": "^4.3.0",
     "react-sticky-footer": "0.1.0-rc3",
     "reactstrap": "^8.9.0",

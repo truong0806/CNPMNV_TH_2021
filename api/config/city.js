@@ -27,5 +27,6 @@ var City = {
     ).then(callback);
   },
 };
+console.log("🚀 ~ file: city.js:30 ~ City.city:", City.city)
 
 module.exports = City;
