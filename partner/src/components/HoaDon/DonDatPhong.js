@@ -8,20 +8,20 @@ export default function DonDatPhong() {
   let id = localStorage.getItem("maTK");
   useEffect(async () => {
     await axios
-      .get(`https://deploy-hotel-api.herokuapp.com/datphong/getbypartner/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/datphong/getbypartner/${id}`)
       .then((res) => setDonDat(res.data));
   }, []);
 
   const xacNhanDon = (id) => {
     axios
-      .put("https://deploy-hotel-api.herokuapp.com/datphong/xacnhan/" + id, {
+      .put(`${process.env.REACT_APP_API_URL}/datphong/xacnhan/` + id, {
         TrangThai: "Đã xác nhận",
       })
       .then(() => (window.location.href = "/dondatphong"));
   };
   const huyXacNhan = (id) => {
     axios
-      .put("https://deploy-hotel-api.herokuapp.com/datphong/xacnhan/" + id, {
+      .put(`${process.env.REACT_APP_API_URL}/datphong/xacnhan/` + id, {
         TrangThai: "Chưa xác nhận",
       })
       .then(() => (window.location.href = "/dondatphong"));
@@ -29,7 +29,7 @@ export default function DonDatPhong() {
 
   const xoaDon = (id) => {
     axios
-      .delete("https://deploy-hotel-api.herokuapp.com/datphong/delete/" + id)
+      .delete( `${process.env.REACT_APP_API_URL}/datphong/delete/` + id)
       .then(setDonDat(donDat.filter((x) => x._id != id)));
   };
 

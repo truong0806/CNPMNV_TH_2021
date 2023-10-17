@@ -81,28 +81,24 @@ export default function Login(props) {
       : (passwordC = "");
 
     if (emailC == "" && passwordC == "") {
-      var acc = await Axios.post(`https://deploy-hotel-api.herokuapp.com/account/check`, {
+      var acc = await Axios.post(`${process.env.REACT_APP_USER_API}/check`, {
         Email: user.email,
         Password: user.password,
       });
-      if(acc.data.length==0)
-      {
-        passwordC="Tài khoản hoặc mật khẩu không đúng !"
+      if (acc.data.length == 0) {
+        passwordC = "Tài khoản hoặc mật khẩu không đúng !"
       }
-      else
-      {
+      else {
         localStorage.removeItem('role')
-        try
-        {
-          await Axios.get("https://deploy-hotel-api.herokuapp.com/role/get/"+acc.data[0].RoleId).then(res=>localStorage.setItem('role',res.data.length!=0?res.data[0].roleName:null))
-          localStorage.setItem('email',acc.data[0].Email)
-          localStorage.setItem('maTK',acc.data[0].MaTK)
+        try {
+          await Axios.get(`${process.env.REACT_APP_API_URL}/role/get/` + acc.data[0].RoleId).then(res => localStorage.setItem('role', res.data.length != 0 ? res.data[0].roleName : null))
+          localStorage.setItem('email', acc.data[0].Email)
+          localStorage.setItem('maTK', acc.data[0].MaTK)
         }
-        catch(error)
-        {
+        catch (error) {
 
         }
-        window.location.href="/"
+        window.location.href='/'
       }
     }
     setErr({ ...err, email: emailC, password: passwordC });

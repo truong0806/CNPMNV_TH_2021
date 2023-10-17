@@ -8,7 +8,7 @@ export default function Index() {
   const history = useHistory();
 
   useEffect(() => {
-    Axios.get("https://deploy-hotel-api.herokuapp.com/hotel/get").then(
+    Axios.get(`${process.env.REACT_APP_API_URL}/hotel/get`).then(
       (resopne) => {
         setHotelList(resopne.data);
       }
@@ -17,7 +17,7 @@ export default function Index() {
 
   const deleteHotel = (id) => {
     Axios.delete(
-      "https://deploy-hotel-api.herokuapp.com/hotel/delete/" + id
+      `${process.env.REACT_APP_API_URL}/hotel/delete/` + id
     ).then(() => {
       setHotelList(hotelList.filter((x) => x._id != id));
     });

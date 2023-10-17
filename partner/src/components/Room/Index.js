@@ -11,7 +11,7 @@ export default function Index() {
 
   useEffect(() => {
     Axios.get(
-      "https://deploy-hotel-api.herokuapp.com/room/getbyhotel/" + id
+      `${process.env.REACT_APP_API_URL}/room/getbyhotel/` + id
     ).then((resopne) => {
       setRoomList(resopne.data);
     });
@@ -19,7 +19,7 @@ export default function Index() {
 
   const deleteRoom = (idDel) => {
     Axios.delete(
-      "https://deploy-hotel-api.herokuapp.com/room/delete/" + idDel
+      `${process.env.REACT_APP_API_URL}/room/delete/` + idDel
     ).then(setRoomList(roomList.filter((x) => x._id != idDel)));
   };
 

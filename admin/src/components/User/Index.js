@@ -10,14 +10,15 @@ function Index(){
   const history = useHistory();
   
   const [user,setUser]=useState([]);
+  console.log("🚀 ~ file: Index.js:13 ~ Index ~ user:", user)
 
   useEffect(()=>{
-    Axios.get("https://deploy-hotel-api.herokuapp.com/account/get").then((response)=>{
+    Axios.get(`${process.env.REACT_APP_USER_API}/get`).then((response)=>{
     setUser(response.data)
   })},[])
 
   const deleteUser=(id)=>{
-    Axios.delete(`https://deploy-hotel-api.herokuapp.com/account/delete/${id}`).then(() => {
+    Axios.delete(`${process.env.REACT_APP_USER_API}/delete/${id}`).then(() => {
           setUser(user.filter(x=>x._id!=id))
         } 
     )

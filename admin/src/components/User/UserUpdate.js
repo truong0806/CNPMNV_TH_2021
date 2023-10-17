@@ -21,14 +21,14 @@ export default function UserUpdate() {
   let { id } = useParams();
 
   useEffect(() => {
-    Axios.get("https://deploy-hotel-api.herokuapp.com/account/get/" + id).then((res) =>
+    Axios.get(`${process.env.REACT_APP_API_URL}/account/get/` + id).then((res) =>
       setUser(res.data)
     );
   }, []);
   
   const userSubmit = () => {
       console.log(user)
-      Axios.put(`https://deploy-hotel-api.herokuapp.com/account/update/${id}`,user).then(() => {
+      Axios.put(`${process.env.REACT_APP_API_URL}/account/update/${id}`,user).then(() => {
         window.location.href = "/user";
       });
   };
@@ -41,7 +41,7 @@ export default function UserUpdate() {
   const options=[{value:null,label:'No Role'}]
   const [role,setRole]=useState([])
   useEffect(()=>{
-    Axios.get("https://deploy-hotel-api.herokuapp.com/role/get").then(res=>{
+    Axios.get(`${process.env.REACT_APP_API_URL}/role/get`).then(res=>{
       setRole(res.data)
     })
   },[])

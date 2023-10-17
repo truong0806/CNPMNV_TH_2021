@@ -12,7 +12,7 @@ function Index(){
   const [role,setRole]=useState([]);
 
   useEffect(()=>{
-    Axios.get("https://deploy-hotel-api.herokuapp.com/role/get").then((response)=>{
+    Axios.get(`${process.env.REACT_APP_API_URL}/role/get`).then((response)=>{
     setRole(response.data)
   })},[])
 
@@ -21,7 +21,7 @@ function Index(){
   }
 
   const deleteRole=(id)=>{
-    Axios.delete(`https://deploy-hotel-api.herokuapp.com/role/delete/${id}`).then(() => {
+    Axios.delete(`${process.env.REACT_APP_API_URL}/role/delete/${id}`).then(() => {
           setRole(role.filter(x=>x._id!=id))
         } 
     )

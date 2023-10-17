@@ -81,7 +81,7 @@ export default function Login(props) {
 
     if (emailC == "" && passwordC == "") {
       var acc = await Axios.post(
-        `https://deploy-hotel-api.herokuapp.com/account/check`,
+        `${process.env.REACT_APP_API_URL}/account/check`,
         {
           Email: user.email,
           Password: user.password,
@@ -93,7 +93,7 @@ export default function Login(props) {
         localStorage.removeItem("role");
         try {
           await Axios.get(
-            "https://deploy-hotel-api.herokuapp.com/role/get/" +
+            `${process.env.REACT_APP_API_URL}/role/get/` +
               acc.data[0].RoleId
           ).then((res) =>
             localStorage.setItem(

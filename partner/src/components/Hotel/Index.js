@@ -9,14 +9,14 @@ export default function Index() {
   const partnerId = localStorage.getItem("maTK");
   useEffect(() => {
     Axios.get(
-      `https://deploy-hotel-api.herokuapp.com/hotel/getbypartner/${partnerId}`
+      `${process.env.REACT_APP_API_URL}/hotel/getbypartner/${partnerId}`
     ).then((resopne) => {
       setHotelList(resopne.data);
     });
   }, []);
 
   const deleteHotel = (id) => {
-    Axios.delete("https://deploy-hotel-api.herokuapp.com/hotel/delete/" + id).then(
+    Axios.delete(`${process.env.REACT_APP_API_URL}/hotel/delete/` + id).then(
       () => {
         setHotelList(hotelList.filter((x) => x._id != id));
       }

@@ -30,7 +30,7 @@ function Index() {
   const [cityList, setCityList] = useState([]);
 
   useEffect(() => {
-    Axios.get("https://deploy-hotel-api.herokuapp.com/city/get").then(
+    Axios.get(`${process.env.REACT_APP_API_URL}/city/get`).then(
       (response) => {
         setCityList(response.data);
       }
@@ -43,7 +43,7 @@ function Index() {
 
   const deleteCity = (id) => {
     Axios.delete(
-      `https://deploy-hotel-api.herokuapp.com/city/delete/${id}`
+      `${process.env.REACT_APP_API_URL}/city/delete/${id}`
     ).then(() => {
       setCityList(cityList.filter((x) => x._id != id));
     });

@@ -20,14 +20,14 @@ export default function Update() {
 
 //   const [role, setRole] = useState([]);
   useEffect(() => {
-    Axios.get("https://deploy-hotel-api.herokuapp.com/role/get/" + id).then((res) =>
+    Axios.get(`${process.env.REACT_APP_API_URL}/role/get/` + id).then((res) =>
       setRoleName(res.data[0].roleName)
     );
   }, []);
 
   const [check, setCheck] = useState([]);
   useEffect(() => {
-    Axios.get("https://deploy-hotel-api.herokuapp.com/role/get").then((res) =>
+    Axios.get(`${process.env.REACT_APP_API_URL}/role/get`).then((res) =>
       setCheck(res.data)
     );
   }, []);
@@ -38,7 +38,7 @@ export default function Update() {
     if (checkRole != undefined) {
       setErr({ RoleName: "Quyền này đã tồn tại!" });
     } else {
-      Axios.put(`https://deploy-hotel-api.herokuapp.com/role/update/${id}`, {
+      Axios.put(`h/role/update/${id}`, {
         roleName: roleName,
       }).then(() => {
         window.location.href = "/role";

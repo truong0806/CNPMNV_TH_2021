@@ -12,7 +12,7 @@ export default function Create() {
     const history = useHistory();
 
     const citySubmit=()=>{
-        Axios.post('https://deploy-hotel-api.herokuapp.com/city/create',{
+        Axios.post(`${process.env.REACT_APP_API_URL}/city/create`,{
             TenThanhPho:nameCity,
             ImageThanhPho:imgCity
         }).then(()=>{

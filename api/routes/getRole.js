@@ -25,6 +25,7 @@ router.get('/role/get/:id?',function(req,res,next){
     }
 });
 router.post('/role/create',function(req,res,next){
+    console.log(req.body)
     Role.addRole(req.body,function(err,count){
         if(err){
             res.json(err);

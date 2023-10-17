@@ -24,7 +24,7 @@ export default function HotelCreate() {
   const history = useHistory();
 
   const createHotel = () => {
-    Axios.post("https://deploy-hotel-api.herokuapp.com/room/create", {
+    Axios.post(`${process.env.REACT_APP_API_URL}/room/create`, {
       nameRoom: room.tenPhong,
       people: room.soLuongNguoi,
       price: room.giaPhong,

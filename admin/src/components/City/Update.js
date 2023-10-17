@@ -13,13 +13,13 @@ export default function Update() {
 
   const [city, setCity] = useState([]);
   useEffect(() => {
-    Axios.get("https://deploy-hotel-api.herokuapp.com/city/get/" + id).then(
+    Axios.get(`${process.env.REACT_APP_API_URL}/city/get/` + id).then(
       (res) => setCity(res.data)
     );
   }, []);
 
   const citySubmit = () => {
-    Axios.put(`https://deploy-hotel-api.herokuapp.com/city/update/${id}`, {
+    Axios.put(`${process.env.REACT_APP_API_URL}/city/update/${id}`, {
       TenThanhPho: nameCity,
       ImageThanhPho: imgCity,
     }).then(() => {

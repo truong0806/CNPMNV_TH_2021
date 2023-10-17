@@ -39,6 +39,7 @@ export default function DetailHotel() {
     return finalPriceFormat;
   };
   const [room, setRoom] = useState([]);
+  console.log("🚀 ~ file: DetailHotel.jsx:42 ~ DetailHotel ~ room:", room)
   useEffect(() => {
     Axios.get(
       `${process.env.REACT_APP_API_URL}/room/getbyhotel/${id}`

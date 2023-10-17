@@ -12,7 +12,7 @@ export default function RoleCreate() {
 
     const [check,setCheck]=useState([])
     useEffect(()=>{
-        Axios.get("https://deploy-hotel-api.herokuapp.com/role/get").then(res=>setCheck(res.data))
+        Axios.get(`${process.env.REACT_APP_API_URL}/role/get`).then(res=>setCheck(res.data))
     },[])
 
     const [err,setErr]=useState({RoleName:''})
@@ -24,7 +24,7 @@ export default function RoleCreate() {
         }
         else
         {
-            Axios.post('https://deploy-hotel-api.herokuapp.com/role/create',{
+            Axios.post(`${process.env.REACT_APP_API_URL}/role/create`,{
                 roleName:roleName,
             }).then(()=>{
                window.location.href="/role"

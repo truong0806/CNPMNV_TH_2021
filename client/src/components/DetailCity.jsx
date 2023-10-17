@@ -14,13 +14,13 @@ export default function DetailCity() {
     let {id}=useParams()
 
     useEffect(()=>{
-        Axios.get('http://localhost:9000/hotel/get').then((res)=>{
+        Axios.get(`${process.env.REACT_APP_API_URL}/hotel/get`).then((res)=>{
             setHotel(res.data)
         })
     },[])
 
     useEffect(async()=>{
-        await Axios.get('http://localhost:9000/city/get/'+id).then((res)=>{
+        await Axios.get(`${process.env.REACT_APP_API_URL}/city/get/`+id).then((res)=>{
             setCity(res.data)
         })
     },[])

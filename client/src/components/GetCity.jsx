@@ -9,7 +9,7 @@ class GetCiTy extends Router.Component {
   }
 
   callAPI() {
-    fetch("http://localhost:9000/city/get")
+    fetch(`${process.env.REACT_APP_API_URL}/city/get`)
       .then((res) => {
         return res.json();
       })

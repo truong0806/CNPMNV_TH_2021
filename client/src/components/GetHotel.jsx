@@ -10,7 +10,7 @@ class GetHotel extends Router.Component{
       }
     
       callAPI() {
-        fetch("http://localhost:9000/hotel/get")
+        fetch(`${process.env.REACT_APP_API_URL}/hotel/get`)
           .then((res) => {
             return res.json();
           })

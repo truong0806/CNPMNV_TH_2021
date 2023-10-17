@@ -16,7 +16,7 @@ export default function HotelCreate() {
   const history = useHistory();
   const maTK = localStorage.getItem("maTK");
   const createHotel = () => {
-    Axios.post("https://deploy-hotel-api.herokuapp.com/hotel/create", {
+    Axios.post(`${process.env.REACT_APP_API_URL}/hotel/create`, {
       nameHotel: nameHotel,
       location: location,
       description: description,
@@ -29,10 +29,11 @@ export default function HotelCreate() {
   };
 
   const [city, setCity] = useState([]);
+  console.log("🚀 ~ file: HotelCreate.js:32 ~ HotelCreate ~ city:", city)
   const option = [];
 
   useEffect(() => {
-    Axios.get("https://deploy-hotel-api.herokuapp.com/city/get").then((res) =>
+    Axios.get(`${process.env.REACT_APP_API_URL}/city/get`).then((res) =>
       setCity(res.data)
     );
   }, []);
